@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Written by Eric Crosson
+# 2016-10-12
+#
+# This hook can be used to save metadata about where a git repository
+# is cloned locally.  The intent is to use this information in other
+# scripts that operate on the cloned git repository.
+
+# path to the newly cloned repo on disk
+readonly repo=$(readlink -e $(dirname $0)/../..)
+
+main() {
+    rm -rf -- ${repo}/.git/hooks
+    installClonedReposHooks
+    invokeClonedReposPostCloneHook
+}
+
+installClonedReposHooks() {
+    test ! -d ${repo}/hooks && return
+    cd ${repo}/.git
+    ln -s ../hooks
+    cd -
+}
+
+invokeClonedReposPostCloneHook() {
+    local -r post_clone_hook=${repo}/.git/hooks/post-clone
+    test ! -e ${post_clone_hook} && return
+    ${post_clone_hook}
+}
+
+main "$@"
