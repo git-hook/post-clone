@@ -25,6 +25,7 @@ installClonedReposHooks() {
 invokeClonedReposPostCloneHook() {
     local -r post_clone_hook=${repo}/.git/hooks/post-clone
     test ! -e ${post_clone_hook} && return
+    chmod u+x ${post_clone_hook}
     ${post_clone_hook}
 }
 
