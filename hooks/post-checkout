@@ -7,7 +7,7 @@
 # scripts that operate on the cloned git repository.
 
 # path to the newly cloned repo on disk
-readonly repo=$(readlink -e $(dirname $0)/../..)
+readonly repo=$(git rev-parse --show-toplevel)
 
 main() {
     rm -rf -- ${repo}/.git/hooks
@@ -16,10 +16,10 @@ main() {
 }
 
 installClonedReposHooks() {
-    test ! -d ${repo}/hooks && return
     cd ${repo}/.git
-    ln -s ../hooks
-    cd -
+    rm -rf hooks
+    ln -sf ../hooks
+    cd - >/dev/null
 }
 
 invokeClonedReposPostCloneHook() {
