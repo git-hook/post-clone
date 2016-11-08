@@ -12,20 +12,18 @@ Usage
 
 #. Clone this repository somewhere on disk::
 
-    mkdir -p ~/workspace
-    git clone https://github.com/ericcrosson/git-post-clone-hook ~/workspace/git-post-clone-hook
+    git clone https://github.com/EricCrosson/git-post-clone-hook /tmp/git-post-clone-hook
 
 #. Clone the desired repository::
 
-    git clone --template=$HOME/workspace/git-post-clone-hook git@github.com:username/repo-of-interest
+    git clone --template=/tmp/git-post-clone-hook git@github.com:username/repo-of-interest
 
-This accomplishes the following:
+In addition to cloning the repository, this method will: ensure 
 
-- the target repository is cloned like normal
 - if present in the cloned repo, ``/hooks/`` is symlinked to ``/.git/hooks/``
 - if present in the cloned repo, ``/.git/hooks/post-clone`` is invoked
 
-    **Note**: this hook will not be invoked again.
+    **Note**: this hook will not be automatically invoked again.
 
 Benefits
 ========
