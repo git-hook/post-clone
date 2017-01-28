@@ -12,13 +12,13 @@ Usage
 
 #. Clone this repository somewhere on disk::
 
-    git clone https://github.com/EricCrosson/git-post-clone-hook /tmp/git-post-clone-hook
+    git clone https://github.com/git-hook/post-clone /tmp/post-clone
 
 #. Clone the desired repository::
 
-    git clone --template=/tmp/git-post-clone-hook git@github.com:username/repo-of-interest
+    git clone --template=/tmp/post-clone git@github.com:username/repo-of-interest
 
-In addition to cloning the repository, this method will: ensure 
+In addition to cloning the repository, this method will: ensure
 
 - if present in the cloned repo, ``/hooks/`` is symlinked to ``/.git/hooks/``
 - if present in the cloned repo, ``/.git/hooks/post-clone`` is invoked
