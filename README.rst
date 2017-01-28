@@ -1,11 +1,11 @@
 Overview
 ========
 
-Whereas git does not provide a ``post-clone`` hook, this project
-effectively provides a the functionality of a ``post-clone`` hook
-(implemented with a ``post-checkout`` hook).  You may use this project
-to invoke your own ``post-clone`` hook, and to install various hooks
-in the local repository after cloning.
+As git does not provide a ``post-clone`` hook, some repositories come
+with manual instructions for post-clone configuration.  This project
+effectively provides a ``post-clone`` hook, allowing project
+maintaniers to specify a project's post-clone behavior and install
+other various hooks.
 
 Usage
 =====
