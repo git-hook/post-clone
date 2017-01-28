@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Written by Eric Crosson
+# 2017-01-28
+#
+# This script clones the post-clone template and applies it to the
+# target repository.
+
+readonly template=$(mktemp -d /tmp/post-clone.XXXXX)
+
+teardown() {
+    rm -rf ${template}
+}
+trap teardown EXIT
+
+init() {
+    cd ${template}
+    git init
+    git remote add origin https://github.com/git-hook/post-clone.git
+    git fetch origin
+    git checkout --track origin/master
+    cd -
+}
+
+main() {
+    git clone --template=${template} "$@"
+}
+
+init &>/dev/null
+main "$@"

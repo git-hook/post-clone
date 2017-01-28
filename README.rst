@@ -10,6 +10,13 @@ other various hooks.
 Usage
 =====
 
+To clone a repository with post-clone hooks::
+
+  curl -fsSL https://github.com/git-hook/post-clone/blob/master/bin/clone | bash -s -- <normal-clone-args>
+
+Manual
+------
+
 #. Clone this repository somewhere on disk::
 
     git clone https://github.com/git-hook/post-clone /tmp/post-clone
