@@ -14,6 +14,8 @@ To clone a repository with post-clone hooks::
 
   curl -fsSL https://github.com/git-hook/post-clone/blob/master/bin/clone | bash -s -- <normal-clone-args>
 
+All arguments will be passed directly to ``git clone``.
+
 Manual
 ------
 
