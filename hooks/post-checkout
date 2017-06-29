@@ -5,8 +5,8 @@
 # This hook can be used to save metadata about where a git repository
 # is cloned locally.  The intent is to use this information in other
 # scripts that operate on the cloned git repository.
-
 # path to the newly cloned repo on disk
+
 readonly repo=$(git rev-parse --show-toplevel)
 
 main() {
