@@ -10,13 +10,13 @@
 readonly repo=$(git rev-parse --show-toplevel)
 
 main() {
-    rm -rf -- ${repo}/.git/hooks
+    rm -rf -- "${repo}/.git/hooks"
     installClonedReposHooks
     invokeClonedReposPostCloneHook
 }
 
 installClonedReposHooks() {
-    cd ${repo}/.git
+    cd "${repo}/.git"
     rm -rf hooks
     ln -sf ../hooks
     cd - >/dev/null
@@ -24,8 +24,8 @@ installClonedReposHooks() {
 
 invokeClonedReposPostCloneHook() {
     local -r post_clone_hook=${repo}/.git/hooks/post-clone
-    test ! -e ${post_clone_hook} && return
-    chmod u+x ${post_clone_hook}
+    test ! -e "${post_clone_hook}" && return
+    chmod u+x "${post_clone_hook}"
     ${post_clone_hook}
 }
 

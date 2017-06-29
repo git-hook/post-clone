@@ -8,12 +8,12 @@
 readonly template=$(mktemp -d /tmp/post-clone.XXXXX)
 
 teardown() {
-    rm -rf ${template}
+    rm -rf "${template}"
 }
 trap teardown EXIT
 
 init() {
-    cd ${template}
+    cd "${template}"
     git init
     git remote add origin https://github.com/git-hook/post-clone.git
     git fetch origin
@@ -22,7 +22,7 @@ init() {
 }
 
 main() {
-    git clone --template=${template} "$@"
+    git clone --template="${template}" "$@"
 }
 
 init &>/dev/null
